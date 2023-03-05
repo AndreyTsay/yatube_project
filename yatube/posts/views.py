@@ -1,11 +1,23 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
 
 
 def index(request):
-    return HttpResponse('Главная страница')
-
+    template = 'posts/index.html'
+    title = 'Это главная страница проекта Yatube'
+    context = {
+        #В словарь можно передать переменную
+        'title': title,
+        # А можно сразу записать значение в словарь. Но обычно так не делают
+    }
+    return render(request, template, context) 
 
 def group_posts(request, slug):
-    return HttpResponse('посты, отфильтрованные по группам.')
-
-
+    template = 'posts/group_list.html'
+    title = 'Здесь будет информация о группах проекта Yatube'
+    context = {
+        #В словарь можно передать переменную
+        'title': title,
+        # А можно сразу записать значение в словарь. Но обычно так не делают
+    }
+    return render(request, template, context)     
